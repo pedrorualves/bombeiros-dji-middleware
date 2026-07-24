@@ -21,9 +21,15 @@ app.use("*", logger());
 app.use(
   "/api/*",
   cors({
-    origin: "*",
+    origin: [
+      "https://djidroneadmin.pedrorualves.eu",
+      "http://localhost:5173",
+      "http://localhost:5174",
+    ],
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
+    exposeHeaders: ["X-Renewed-Token"],
+    credentials: true,
   })
 );
 

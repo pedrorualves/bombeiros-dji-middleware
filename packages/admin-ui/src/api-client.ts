@@ -1,3 +1,4 @@
+const API_BASE = import.meta.env.VITE_API_URL ?? "";
 const TOKEN_KEY = "token";
 const USER_KEY = "user";
 
@@ -41,7 +42,7 @@ export async function apiFetch<T = unknown>(
     headers["Authorization"] = `Bearer ${token}`;
   }
 
-  const res = await fetch(path, { ...options, headers });
+  const res = await fetch(`${API_BASE}${path}`, { ...options, headers });
 
   if (res.status === 401) {
     clearAuth();
