@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import type { UserRole } from "@bombeiros/shared";
-import { LoginInput, RegisterInput } from "@bombeiros/shared";
+import type { UserRole } from "@dji-mw/shared";
+import { LoginInput, RegisterInput } from "@dji-mw/shared";
 import {
   hashPassword,
   verifyPassword,

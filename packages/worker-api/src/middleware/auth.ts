@@ -1,6 +1,6 @@
 import { createMiddleware } from "hono/factory";
 import type { Env } from "../bindings.js";
-import type { UserRole, JWTPayload } from "@bombeiros/shared";
+import type { UserRole, JWTPayload } from "@dji-mw/shared";
 import { verifyJWT, shouldRenewJWT, signJWT } from "../services/crypto.js";
 
 export interface AuthUser {

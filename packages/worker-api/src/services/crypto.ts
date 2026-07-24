@@ -1,5 +1,5 @@
-import { SESSION } from "@bombeiros/shared";
-import type { JWTPayload } from "@bombeiros/shared";
+import { SESSION } from "@dji-mw/shared";
+import type { JWTPayload } from "@dji-mw/shared";
 
 const encoder = new TextEncoder();
 const decoder = new TextDecoder();

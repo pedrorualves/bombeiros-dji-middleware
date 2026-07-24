@@ -1,5 +1,5 @@
 {
-  "name": "@bombeiros/dji-simulator",
+  "name": "@dji-mw/dji-simulator",
   "version": "0.1.0",
   "private": true,
   "type": "module",

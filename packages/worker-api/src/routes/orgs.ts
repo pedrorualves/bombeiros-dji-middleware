@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import type { UserRole } from "@bombeiros/shared";
-import { CreateOrgInput, UpdateOrgInput } from "@bombeiros/shared";
+import type { UserRole } from "@dji-mw/shared";
+import { CreateOrgInput, UpdateOrgInput } from "@dji-mw/shared";
 import { authMiddleware, requireRole, requireOrgAccess } from "../middleware/auth.js";
 import {
   listOrgs,

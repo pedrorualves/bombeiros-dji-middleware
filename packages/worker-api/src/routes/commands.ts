@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import type { UserRole } from "@bombeiros/shared";
+import type { UserRole } from "@dji-mw/shared";
 import { authMiddleware, requireOrgAccess } from "../middleware/auth.js";
 import { sendDJICommand } from "../services/mqtt-bridge.js";
 import * as dbQueries from "../db/queries.js";

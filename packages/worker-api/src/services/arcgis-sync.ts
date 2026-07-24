@@ -1,5 +1,5 @@
 import type { Env } from "../bindings.js";
-import type { ArcGISConfig } from "@bombeiros/shared";
+import type { ArcGISConfig } from "@dji-mw/shared";
 import { decrypt } from "./crypto.js";
 import * as dbQueries from "../db/queries.js";
 
@@ -28,7 +28,7 @@ export async function getArcGISToken(
     const params = new URLSearchParams({
       username: config.username,
       password,
-      referer: "https://djidrone.pedrorualves.eu",
+      referer: "https://middleware.local",
       f: "json",
     });
     const res = await fetch("https://www.arcgis.com/sharing/rest/generateToken", {

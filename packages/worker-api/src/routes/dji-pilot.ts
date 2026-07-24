@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import { DJI_RESPONSE_CODES } from "@bombeiros/shared";
+import { DJI_RESPONSE_CODES } from "@dji-mw/shared";
 import { signJWT, verifyJWT, verifyPassword } from "../services/crypto.js";
 import * as dbQueries from "../db/queries.js";
 
@@ -126,7 +126,7 @@ djiPilotRoutes.get("/api/v1/workspaces/current", async (c) => {
         workspace_id: payload.org_id,
         workspace_name: org?.name ?? "Unknown",
         workspace_desc: "DJI Pilot Workspace",
-        platform_name: "Bombeiros DJI Middleware",
+        platform_name: "DJI Cloud Middleware",
       }),
       200
     );

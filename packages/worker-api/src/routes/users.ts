@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import type { UserRole } from "@bombeiros/shared";
-import { CreateUserInput, UpdateUserRoleInput } from "@bombeiros/shared";
+import type { UserRole } from "@dji-mw/shared";
+import { CreateUserInput, UpdateUserRoleInput } from "@dji-mw/shared";
 import { authMiddleware, requireOrgAccess } from "../middleware/auth.js";
 import { hashPassword } from "../services/crypto.js";
 import * as dbQueries from "../db/queries.js";

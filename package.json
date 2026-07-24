@@ -1,8 +1,8 @@
 {
-  "name": "bombeiros-dji-middleware",
+  "name": "dji-arcgis-middleware",
   "version": "0.1.0",
   "private": true,
-  "description": "Middleware bridging DJI Matrice 4T drones to ArcGIS Online for Portuguese firefighter departments",
+  "description": "Multi-tenant middleware bridging DJI Matrice 4T drones to ArcGIS Online Feature Layers",
   "workspaces": [
     "packages/*"
   ],

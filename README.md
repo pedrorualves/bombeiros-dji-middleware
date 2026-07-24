@@ -1,6 +1,6 @@
-# Bombeiros DJI Middleware
+# DJI → ArcGIS Middleware
 
-Middleware that bridges DJI Matrice 4T drones (via DJI Cloud API) to ArcGIS Online Feature Layers, enabling Portuguese firefighter departments to push real-time telemetry, photos, videos, and map elements directly to the ANEPC national platform.
+Middleware that bridges DJI Matrice 4T drones (via DJI Cloud API) to ArcGIS Online Feature Layers, enabling multi-tenant organizations to push real-time telemetry, photos, videos, and map elements directly to their ArcGIS feature services.
 
 ## Architecture
 
@@ -53,10 +53,10 @@ npm run upload -w packages/dji-simulator
 
 ```bash
 # 1. Create D1 database
-npx wrangler d1 create bombeiros-db
+npx wrangler d1 create dji-middleware-db
 
 # 2. Create R2 bucket
-npx wrangler r2 bucket create bombeiros-media
+npx wrangler r2 bucket create dji-media
 
 # 3. Create KV namespace
 npx wrangler kv namespace create SESSION_STORE
@@ -64,7 +64,7 @@ npx wrangler kv namespace create SESSION_STORE
 # 4. Update wrangler.jsonc with the IDs from steps 1-3
 
 # 5. Run D1 migrations
-npx wrangler d1 execute bombeiros-db --file=packages/worker-api/src/db/schema.sql
+npx wrangler d1 execute dji-middleware-db --file=packages/worker-api/src/db/schema.sql
 
 # 6. Set secrets
 npx wrangler secret put JWT_SECRET
@@ -97,24 +97,24 @@ Configure EMQX rule engine to forward MQTT messages to the Worker:
 
 1. **Telemetry** (OSD data):
    - Topic: `thing/product/+/osd`
-   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/telemetry`
+   - HTTP Action: `POST https://YOUR_DOMAIN/api/ingest/telemetry`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 2. **Events** (flight events):
    - Topic: `thing/product/+/events`
-   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/events`
+   - HTTP Action: `POST https://YOUR_DOMAIN/api/ingest/events`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 3. **Status** (online/offline):
    - Topic: `sys/product/+/status`
-   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/status`
+   - HTTP Action: `POST https://YOUR_DOMAIN/api/ingest/status`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 ### DJI Pilot 2 Configuration
 
 In DJI Pilot 2 settings, set the cloud service URL to:
 ```
-https://djidrone.pedrorualves.eu/manage
+https://YOUR_DOMAIN/manage
 ```
 
 The webview will call `/manage/api/v1/login` and the media upload flow will use `/media/api/v1/workspaces/:wsId/*`.

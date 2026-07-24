@@ -13,7 +13,7 @@ describe("DJI Pilot Routes", () => {
     const regRes = await fetchApp("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
-        email: "djipilot@bombeiros.pt",
+        email: "pilot@test.local",
         password: "Test1234!",
       }),
     });
@@ -26,7 +26,7 @@ describe("DJI Pilot Routes", () => {
     const res = await fetchApp("/manage/api/v1/login", {
       method: "POST",
       body: JSON.stringify({
-        username: "djipilot@bombeiros.pt",
+        username: "pilot@test.local",
         password: "Test1234!",
       }),
     });
@@ -40,7 +40,7 @@ describe("DJI Pilot Routes", () => {
     const res = await fetchApp("/manage/api/v1/login", {
       method: "POST",
       body: JSON.stringify({
-        username: "djipilot@bombeiros.pt",
+        username: "pilot@test.local",
         password: "wrongpass",
       }),
     });
@@ -53,7 +53,7 @@ describe("DJI Pilot Routes", () => {
     const loginRes = await fetchApp("/manage/api/v1/login", {
       method: "POST",
       body: JSON.stringify({
-        username: "djipilot@bombeiros.pt",
+        username: "pilot@test.local",
         password: "Test1234!",
       }),
     });
@@ -72,7 +72,7 @@ describe("DJI Pilot Routes", () => {
     const loginRes = await fetchApp("/manage/api/v1/login", {
       method: "POST",
       body: JSON.stringify({
-        username: "djipilot@bombeiros.pt",
+        username: "pilot@test.local",
         password: "Test1234!",
       }),
     });

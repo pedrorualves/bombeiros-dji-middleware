@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import type { UserRole } from "@bombeiros/shared";
-import { PaginationInput } from "@bombeiros/shared";
+import type { UserRole } from "@dji-mw/shared";
+import { PaginationInput } from "@dji-mw/shared";
 import { authMiddleware, requireOrgAccess } from "../middleware/auth.js";
 import { getSyncLogs } from "../db/queries.js";
 

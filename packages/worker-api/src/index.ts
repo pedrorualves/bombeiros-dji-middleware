@@ -28,7 +28,7 @@ app.use(
 );
 
 app.get("/", (c) =>
-  c.json({ status: "ok", service: "bombeiros-dji-middleware" })
+  c.json({ status: "ok", service: "dji-arcgis-middleware" })
 );
 
 app.route("/api/auth", authRoutes);

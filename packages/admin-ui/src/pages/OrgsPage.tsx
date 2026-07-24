@@ -114,7 +114,7 @@ export function OrgsPage() {
               onChange={(e) => setName(e.target.value)}
               required
               className="w-full px-3 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-              placeholder="Bombeiros Voluntarios de Lisboa"
+              placeholder="My Organization"
             />
           </div>
           {!editingOrg && (

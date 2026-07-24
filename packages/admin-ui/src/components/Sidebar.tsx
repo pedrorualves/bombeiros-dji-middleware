@@ -35,7 +35,7 @@ export function Sidebar() {
           </div>
           <div>
             <h1 className="text-sm font-bold text-white leading-tight">
-              Bombeiros DJI
+              DJI Cloud
             </h1>
             <p className="text-xs text-slate-400">Middleware</p>
           </div>

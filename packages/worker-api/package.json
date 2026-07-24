@@ -1,5 +1,5 @@
 {
-  "name": "@bombeiros/worker-api",
+  "name": "@dji-mw/worker-api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "hono": "^4.5.0",
-    "@bombeiros/shared": "*"
+    "@dji-mw/shared": "*"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240725.0",

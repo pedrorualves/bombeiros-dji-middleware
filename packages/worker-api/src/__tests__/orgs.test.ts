@@ -13,7 +13,7 @@ describe("Org Routes", () => {
     const res = await fetchApp("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
-        email: "orgtest@bombeiros.pt",
+        email: "orgtest@test.local",
         password: "Test1234!",
       }),
     });
@@ -26,14 +26,14 @@ describe("Org Routes", () => {
       method: "POST",
       token,
       body: JSON.stringify({
-        name: "Bombeiros Lisboa",
-        slug: "bombeiros-lisboa",
+        name: "Test Org Alpha",
+        slug: "test-org-alpha",
       }),
     });
     expect(res.status).toBe(201);
     const body = (await res.json()) as { org: { id: string; name: string; slug: string } };
-    expect(body.org.name).toBe("Bombeiros Lisboa");
-    expect(body.org.slug).toBe("bombeiros-lisboa");
+    expect(body.org.name).toBe("Test Org Alpha");
+    expect(body.org.slug).toBe("test-org-alpha");
     orgId = body.org.id;
   });
 
@@ -48,11 +48,11 @@ describe("Org Routes", () => {
     const res = await fetchApp(`/api/orgs/${orgId}`, {
       method: "PUT",
       token,
-      body: JSON.stringify({ name: "Bombeiros Lisboa Updated" }),
+      body: JSON.stringify({ name: "Test Org Alpha Updated" }),
     });
     expect(res.status).toBe(200);
     const body = (await res.json()) as { org: { name: string } };
-    expect(body.org.name).toBe("Bombeiros Lisboa Updated");
+    expect(body.org.name).toBe("Test Org Alpha Updated");
   });
 
   it("POST /api/orgs with duplicate slug fails", async () => {
@@ -61,7 +61,7 @@ describe("Org Routes", () => {
       token,
       body: JSON.stringify({
         name: "Another Org",
-        slug: "bombeiros-lisboa",
+        slug: "test-org-alpha",
       }),
     });
     expect(res.status).toBe(409);

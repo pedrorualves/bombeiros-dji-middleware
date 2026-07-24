@@ -7,7 +7,7 @@ import type {
   MediaRecord,
   SyncType,
   SyncStatus,
-} from "@bombeiros/shared";
+} from "@dji-mw/shared";
 
 type DB = D1Database;
 

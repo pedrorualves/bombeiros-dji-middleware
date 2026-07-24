@@ -71,7 +71,7 @@ export function LoginPage() {
             <Flame className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-2xl font-bold text-white">
-            Bombeiros DJI Middleware
+            DJI Middleware
           </h1>
           <p className="text-slate-400 mt-1">DJI Matrice 4T → ArcGIS</p>
         </div>
@@ -98,7 +98,7 @@ export function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="w-full px-4 py-2 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-              placeholder="admin@bombeiros.pt"
+              placeholder="admin@example.com"
             />
           </div>
           <div>

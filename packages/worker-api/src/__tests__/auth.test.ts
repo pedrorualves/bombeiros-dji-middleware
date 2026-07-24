@@ -31,7 +31,7 @@ describe("Auth Routes", () => {
       const res = await fetchApp("/api/auth/register", {
         method: "POST",
         body: JSON.stringify({
-          email: "admin@bombeiros.pt",
+          email: "admin@test.local",
           password: "Test1234!",
         }),
       });
@@ -46,7 +46,7 @@ describe("Auth Routes", () => {
       const res = await fetchApp("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
-          email: "admin@bombeiros.pt",
+          email: "admin@test.local",
           password: "Test1234!",
         }),
       });
@@ -60,14 +60,14 @@ describe("Auth Routes", () => {
       const res = await fetchApp("/api/auth/me", { token });
       expect(res.status).toBe(200);
       const body = (await res.json()) as { user: { email: string } };
-      expect(body.user.email).toBe("admin@bombeiros.pt");
+      expect(body.user.email).toBe("admin@test.local");
     });
 
     it("POST /api/auth/login with wrong password fails", async () => {
       const res = await fetchApp("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
-          email: "admin@bombeiros.pt",
+          email: "admin@test.local",
           password: "wrongpassword",
         }),
       });

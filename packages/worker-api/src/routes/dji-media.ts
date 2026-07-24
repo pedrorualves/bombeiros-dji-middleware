@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import type { Env } from "../bindings.js";
-import { DJI_RESPONSE_CODES } from "@bombeiros/shared";
+import { DJI_RESPONSE_CODES } from "@dji-mw/shared";
 import { verifyJWT } from "../services/crypto.js";
 import * as dbQueries from "../db/queries.js";
 import { syncMediaToArcGIS } from "../services/arcgis-sync.js";
@@ -52,7 +52,7 @@ djiMediaRoutes.post("/api/v1/workspaces/:wsId/obtain-sts", async (c) => {
     }
 
     const wsId = c.req.param("wsId");
-    const bucket = "bombeiros-media";
+    const bucket = "dji-media";
     const region = "auto";
     const objectKeyPrefix = `orgs/${wsId}/media/`;
 

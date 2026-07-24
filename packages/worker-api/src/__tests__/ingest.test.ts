@@ -14,7 +14,7 @@ describe("Ingest Routes", () => {
     const regRes = await fetchApp("/api/auth/register", {
       method: "POST",
       body: JSON.stringify({
-        email: "ingest@bombeiros.pt",
+        email: "ingest@test.local",
         password: "Test1234!",
       }),
     });
