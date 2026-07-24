@@ -1,0 +1,25 @@
+package-lock.json
+  s_bb6d96b8f784ff::t_f7adb2894cddf2 1-4153
+packages/worker-api/package.json
+  s_bb6d96b8f784ff::t_a1b753b1b7ff6c 1-23
+packages/worker-api/src/db/queries.ts
+  s_bb6d96b8f784ff::t_2db2525196ec60 1-388
+packages/worker-api/src/db/schema.sql
+  s_bb6d96b8f784ff::t_1e79efb1f147dc 1-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "b4c0050188064f2a7d08075962d8681cc695e5ba",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
