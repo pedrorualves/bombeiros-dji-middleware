@@ -32,6 +32,12 @@ export const DJI_RESPONSE_CODES = {
 
 export const DEFAULT_SYNC_INTERVAL_SECONDS = 10;
 
-export const JWT_EXPIRY_SECONDS = 86400; // 24 hours
+export const SESSION = {
+  JWT_EXPIRY_SECONDS: 604800,          // 7 days
+  JWT_RENEW_AFTER_SECONDS: 302400,     // 3.5 days — auto-renew past this age
+  PBKDF2_ITERATIONS: 600000,           // OWASP 2023 recommendation for SHA-256
+  PBKDF2_SALT_BYTES: 16,
+  AES_IV_BYTES: 12,                    // AES-GCM standard
+} as const;
 
 export const MAX_ATTACHMENT_SIZE_BYTES = 2 * 1024 * 1024 * 1024; // 2 GB
