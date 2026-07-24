@@ -48,9 +48,12 @@ export async function getArcGISToken(
       method: "POST",
       body: params,
     });
-    const data = await res.json() as { token?: string; expires?: number; error?: { message: string } };
+    const data = await res.json() as { token?: string; expires?: number; error?: { code?: number; message?: string; details?: string[] } };
     if (data.error || !data.token) {
-      throw new Error(`ArcGIS token error: ${data.error?.message ?? "Unknown"}`);
+      const details = data.error?.details?.join("; ") ?? "";
+      throw new Error(
+        `ArcGIS token error: ${data.error?.message ?? "Unknown"}${details ? ` (${details})` : ""}`
+      );
     }
     tokenCache.set(config.org_id, { token: data.token, expires: data.expires ?? now + 3600000 });
     return data.token;
