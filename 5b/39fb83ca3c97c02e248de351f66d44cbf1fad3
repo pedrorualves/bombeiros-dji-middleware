@@ -1,0 +1,21 @@
+packages/worker-api/src/routes/auth.ts
+  s_bb6d96b8f784ff::t_3da9d2d82ec1ac 17,101-108
+packages/worker-api/src/services/crypto.ts
+  s_bb6d96b8f784ff::t_abe9159d8c97c6 13-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "5b39fb83ca3c97c02e248de351f66d44cbf1fad3",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
