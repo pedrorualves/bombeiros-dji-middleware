@@ -9,7 +9,7 @@
     {
       "binding": "DB",
       "database_name": "dji-middleware-db",
-      "database_id": "YOUR_D1_DATABASE_ID"
+      "database_id": "8557cd76-3832-435c-a6eb-135ac899c3ab"
     }
   ],
 
@@ -25,14 +25,14 @@
   "kv_namespaces": [
     {
       "binding": "SESSION_STORE",
-      "id": "YOUR_KV_NAMESPACE_ID"
+      "id": "36c33d6599394e07a956c640e287c314"
     }
   ],
 
-  // Custom domain
-  "routes": [
-    { "pattern": "YOUR_CUSTOM_DOMAIN", "custom_domain": true }
-  ],
+  // Custom domain — uncomment after adding domain to Cloudflare DNS
+  // "routes": [
+  //   { "pattern": "djidrone.pedrorualves.eu", "custom_domain": true }
+  // ],
 
   // Secrets (set via `wrangler secret put`):
   // JWT_SECRET, WEBHOOK_SECRET, ENCRYPTION_KEY,
