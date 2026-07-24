@@ -10,8 +10,18 @@ export async function hashPassword(password: string): Promise<string> {
   const salt = crypto.getRandomValues(
     new Uint8Array(SESSION.PBKDF2_SALT_BYTES)
   );
-  const key = await deriveKey(password, salt);
-  const hash = await crypto.subtle.exportKey("raw", key) as ArrayBuffer;
+  const baseKey = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(password),
+    "PBKDF2",
+    false,
+    ["deriveBits"]
+  );
+  const hash = await crypto.subtle.deriveBits(
+    { name: "PBKDF2", salt, iterations: SESSION.PBKDF2_ITERATIONS, hash: "SHA-256" },
+    baseKey,
+    256
+  );
   const saltHex = bufToHex(salt);
   const hashHex = bufToHex(new Uint8Array(hash));
   return `pbkdf2:${SESSION.PBKDF2_ITERATIONS}:${saltHex}:${hashHex}`;
@@ -42,30 +52,6 @@ export async function verifyPassword(
   const actualHash = bufToHex(new Uint8Array(derived));
 
   return timingSafeEqual(actualHash, expectedHash);
-}
-
-async function deriveKey(
-  password: string,
-  salt: Uint8Array
-): Promise<CryptoKey> {
-  const baseKey = await crypto.subtle.importKey(
-    "raw",
-    encoder.encode(password),
-    "PBKDF2",
-    false,
-    ["deriveBits"]
-  );
-  const bits = await crypto.subtle.deriveBits(
-    {
-      name: "PBKDF2",
-      salt,
-      iterations: SESSION.PBKDF2_ITERATIONS,
-      hash: "SHA-256",
-    },
-    baseKey,
-    256
-  );
-  return crypto.subtle.importKey("raw", bits, "HMAC", true, ["sign"]);
 }
 
 // ─── JWT (HMAC-SHA256, compact serialization) ────────────────────────────────

@@ -14,6 +14,7 @@ import {
   createUser,
   countUsers,
   getOrgById,
+  getOrgBySlug,
   createOrg,
 } from "../db/queries.js";
 import { authMiddleware } from "../middleware/auth.js";
@@ -97,8 +98,14 @@ authRoutes.post("/register", async (c) => {
       return c.json({ error: "Email already registered" }, 409);
     }
 
-    const orgId = crypto.randomUUID();
-    await createOrg(c.env.DB, orgId, "System", "system");
+    let orgId: string;
+    const existingOrg = await getOrgBySlug(c.env.DB, "system");
+    if (existingOrg) {
+      orgId = existingOrg.id;
+    } else {
+      orgId = crypto.randomUUID();
+      await createOrg(c.env.DB, orgId, "System", "system");
+    }
 
     const userId = crypto.randomUUID();
     const passwordHash = await hashPassword(password);
