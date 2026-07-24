@@ -10,6 +10,19 @@ interface ArcGISToken {
 
 const tokenCache = new Map<string, ArcGISToken>();
 
+const GENERIC_HEADERS: HeadersInit = {
+  "User-Agent": "Mozilla/5.0",
+  Referer: "https://www.arcgis.com",
+};
+
+function arcgisFetch(url: string, init?: RequestInit): Promise<Response> {
+  const headers = new Headers(init?.headers);
+  for (const [k, v] of Object.entries(GENERIC_HEADERS)) {
+    headers.set(k, v);
+  }
+  return fetch(url, { ...init, headers });
+}
+
 export async function getArcGISToken(
   env: Env,
   config: ArcGISConfig
@@ -28,10 +41,10 @@ export async function getArcGISToken(
     const params = new URLSearchParams({
       username: config.username,
       password,
-      referer: "https://middleware.local",
+      referer: "https://www.arcgis.com",
       f: "json",
     });
-    const res = await fetch("https://www.arcgis.com/sharing/rest/generateToken", {
+    const res = await arcgisFetch("https://www.arcgis.com/sharing/rest/generateToken", {
       method: "POST",
       body: params,
     });
@@ -54,7 +67,7 @@ export async function getArcGISToken(
       grant_type: "client_credentials",
       f: "json",
     });
-    const res = await fetch("https://www.arcgis.com/sharing/rest/oauth2/token", {
+    const res = await arcgisFetch("https://www.arcgis.com/sharing/rest/oauth2/token", {
       method: "POST",
       body: params,
     });
@@ -97,7 +110,7 @@ export async function addFeaturePoint(
     f: "json",
   });
 
-  const res = await fetch(`${layerUrl}/addFeatures`, {
+  const res = await arcgisFetch(`${layerUrl}/addFeatures`, {
     method: "POST",
     body: params,
   });
@@ -133,7 +146,7 @@ export async function addAttachment(
   formData.append("token", token);
   formData.append("f", "json");
 
-  const res = await fetch(`${layerUrl}/${objectId}/addAttachment`, {
+  const res = await arcgisFetch(`${layerUrl}/${objectId}/addAttachment`, {
     method: "POST",
     body: formData,
   });
