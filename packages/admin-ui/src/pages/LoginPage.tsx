@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Flame } from "lucide-react";
 import { useAuth } from "../auth-context";
 
+const API_BASE = import.meta.env.VITE_API_URL ?? "";
+
 export function LoginPage() {
   const navigate = useNavigate();
   const { user, login, bootstrap, loading } = useAuth();
@@ -17,7 +19,7 @@ export function LoginPage() {
       navigate("/dashboard", { replace: true });
       return;
     }
-    fetch("/api/auth/me")
+    fetch(`${API_BASE}/api/auth/me`)
       .then((r) => {
         if (r.status === 401) {
           return r.json().then(() => {});
@@ -25,7 +27,7 @@ export function LoginPage() {
       })
       .catch(() => {})
       .finally(() => {
-        fetch("/api/auth/register", {
+        fetch(`${API_BASE}/api/auth/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
