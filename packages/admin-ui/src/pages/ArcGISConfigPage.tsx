@@ -326,7 +326,7 @@ export function ArcGISConfigPage() {
             )}
             {testResult.success
               ? "Connection successful!"
-              : `Failed: ${testResult.error}`}
+              : `Failed: ${typeof testResult.error === "object" ? JSON.stringify(testResult.error) : testResult.error}`}
           </div>
         )}
       </form>

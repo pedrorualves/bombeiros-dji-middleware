@@ -98,7 +98,11 @@ arcgisConfigRoutes.post("/test", async (c) => {
     }
     const info = await res.json() as Record<string, unknown>;
     if (info.error) {
-      return c.json({ success: false, error: info.error });
+      const errMsg =
+        typeof info.error === "object"
+          ? (info.error as Record<string, unknown>).message ?? JSON.stringify(info.error)
+          : String(info.error);
+      return c.json({ success: false, error: errMsg });
     }
     return c.json({
       success: true,
