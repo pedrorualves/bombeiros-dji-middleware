@@ -1,0 +1,19 @@
+packages/worker-api/wrangler.jsonc
+  s_bb6d96b8f784ff::t_d5fb818767cca0 12,28,32-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "53c56b2259990e603f62b6f2a7f8dda31e44a8db",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
