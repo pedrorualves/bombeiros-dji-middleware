@@ -97,24 +97,24 @@ Configure EMQX rule engine to forward MQTT messages to the Worker:
 
 1. **Telemetry** (OSD data):
    - Topic: `thing/product/+/osd`
-   - HTTP Action: `POST https://your-worker.workers.dev/api/ingest/telemetry`
+   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/telemetry`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 2. **Events** (flight events):
    - Topic: `thing/product/+/events`
-   - HTTP Action: `POST https://your-worker.workers.dev/api/ingest/events`
+   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/events`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 3. **Status** (online/offline):
    - Topic: `sys/product/+/status`
-   - HTTP Action: `POST https://your-worker.workers.dev/api/ingest/status`
+   - HTTP Action: `POST https://djidrone.pedrorualves.eu/api/ingest/status`
    - Header: `X-Webhook-Secret: <your-webhook-secret>`
 
 ### DJI Pilot 2 Configuration
 
 In DJI Pilot 2 settings, set the cloud service URL to:
 ```
-https://your-worker.workers.dev/manage
+https://djidrone.pedrorualves.eu/manage
 ```
 
 The webview will call `/manage/api/v1/login` and the media upload flow will use `/media/api/v1/workspaces/:wsId/*`.

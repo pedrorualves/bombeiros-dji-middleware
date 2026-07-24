@@ -29,10 +29,16 @@
     }
   ],
 
+  // Custom domain
+  "routes": [
+    { "pattern": "djidrone.pedrorualves.eu", "custom_domain": true }
+  ],
+
   // Secrets (set via `wrangler secret put`):
   // JWT_SECRET, WEBHOOK_SECRET, ENCRYPTION_KEY,
   // DJI_APP_ID, DJI_APP_KEY, DJI_APP_LICENSE,
-  // R2_ACCESS_KEY_ID, R2_ACCESS_KEY_SECRET
+  // R2_ACCESS_KEY_ID, R2_ACCESS_KEY_SECRET, R2_ACCOUNT_ID,
+  // EMQX_API_KEY, EMQX_API_SECRET
 
   "dev": {
     "port": 8787

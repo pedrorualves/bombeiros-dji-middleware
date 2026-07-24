@@ -28,7 +28,7 @@ export async function getArcGISToken(
     const params = new URLSearchParams({
       username: config.username,
       password,
-      referer: "https://bombeiros-dji-middleware.workers.dev",
+      referer: "https://djidrone.pedrorualves.eu",
       f: "json",
     });
     const res = await fetch("https://www.arcgis.com/sharing/rest/generateToken", {
