@@ -396,3 +396,41 @@ export async function getMediaByOrg(
 
   return { media: result.results, total };
 }
+
+export async function getDashboardStats(
+  db: DB,
+  orgId: string
+): Promise<{
+  drone_count: number;
+  media_count: number;
+  syncs_today: number;
+  failed_today: number;
+}> {
+  const today = new Date().toISOString().slice(0, 10);
+
+  const [droneRes, mediaRes, syncsRes, failedRes] = await db.batch([
+    db
+      .prepare("SELECT COUNT(*) as count FROM drones WHERE org_id = ?")
+      .bind(orgId),
+    db
+      .prepare("SELECT COUNT(*) as count FROM media WHERE org_id = ?")
+      .bind(orgId),
+    db
+      .prepare(
+        "SELECT COUNT(*) as count FROM sync_logs WHERE org_id = ? AND status = 'success' AND created_at >= ?"
+      )
+      .bind(orgId, today),
+    db
+      .prepare(
+        "SELECT COUNT(*) as count FROM sync_logs WHERE org_id = ? AND status = 'failed' AND created_at >= ?"
+      )
+      .bind(orgId, today),
+  ]);
+
+  return {
+    drone_count: (droneRes.results[0] as { count: number })?.count ?? 0,
+    media_count: (mediaRes.results[0] as { count: number })?.count ?? 0,
+    syncs_today: (syncsRes.results[0] as { count: number })?.count ?? 0,
+    failed_today: (failedRes.results[0] as { count: number })?.count ?? 0,
+  };
+}
