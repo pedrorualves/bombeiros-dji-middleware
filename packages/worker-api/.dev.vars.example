@@ -6,5 +6,6 @@ DJI_APP_KEY=your-dji-app-key
 DJI_APP_LICENSE=your-dji-app-license
 R2_ACCESS_KEY_ID=your-r2-access-key
 R2_ACCESS_KEY_SECRET=your-r2-secret-key
+R2_ACCOUNT_ID=your-cloudflare-account-id
 EMQX_HOST=your-emqx-host-or-ip
 EMQX_PORT=1883

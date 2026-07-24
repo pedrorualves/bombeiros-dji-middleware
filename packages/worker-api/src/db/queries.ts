@@ -341,6 +341,16 @@ export async function createMediaRecord(
     .run();
 }
 
+export async function getMediaById(
+  db: DB,
+  id: string
+): Promise<MediaRecord | null> {
+  return db
+    .prepare("SELECT * FROM media WHERE id = ?")
+    .bind(id)
+    .first<MediaRecord>();
+}
+
 export async function getMediaByFingerprint(
   db: DB,
   fingerprint: string

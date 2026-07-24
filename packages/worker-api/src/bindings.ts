@@ -10,6 +10,7 @@ export interface Env {
   DJI_APP_LICENSE: string;
   R2_ACCESS_KEY_ID: string;
   R2_ACCESS_KEY_SECRET: string;
+  R2_ACCOUNT_ID: string;
   EMQX_HOST: string;
   EMQX_PORT: string;
 }
