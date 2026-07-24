@@ -1,0 +1,23 @@
+packages/admin-ui/.env.production
+  s_bb6d96b8f784ff::t_0046f87e2cbd96 1
+packages/admin-ui/public/_redirects
+  s_bb6d96b8f784ff::t_959681a3c24b69 1
+packages/admin-ui/tsconfig.tsbuildinfo
+  s_bb6d96b8f784ff::t_a562a814c9bf94 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "2b2cdc6835e7ae1ba318aa538cc3c63d176ef5ce",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
