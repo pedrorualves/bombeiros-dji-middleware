@@ -19,7 +19,7 @@ const navItems = [
   { to: "/drones", label: "Drones", icon: Radio },
   { to: "/arcgis", label: "ArcGIS Config", icon: Map },
   { to: "/media", label: "Media", icon: Image },
-  { to: "/users", label: "Users", icon: Users },
+  { to: "/users", label: "Users", icon: Users, adminOnly: true },
   { to: "/sync-logs", label: "Sync Logs", icon: ScrollText },
 ];
 
@@ -44,7 +44,13 @@ export function Sidebar() {
 
       <nav className="flex-1 p-3 space-y-1">
         {navItems
-          .filter((item) => !item.superOnly || user?.role === "super_admin")
+          .filter(
+            (item) =>
+              (!item.superOnly || user?.role === "super_admin") &&
+              (!item.adminOnly ||
+                user?.role === "super_admin" ||
+                user?.role === "org_admin")
+          )
           .map((item) => (
             <NavLink
               key={item.to}
