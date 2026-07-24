@@ -9,3 +9,5 @@ R2_ACCESS_KEY_SECRET=your-r2-secret-key
 R2_ACCOUNT_ID=your-cloudflare-account-id
 EMQX_HOST=your-emqx-host-or-ip
 EMQX_PORT=1883
+EMQX_API_KEY=your-emqx-api-key
+EMQX_API_SECRET=your-emqx-api-secret

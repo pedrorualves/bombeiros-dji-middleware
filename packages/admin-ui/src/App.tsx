@@ -7,6 +7,7 @@ import { DronesPage } from "./pages/DronesPage";
 import { ArcGISConfigPage } from "./pages/ArcGISConfigPage";
 import { SyncLogsPage } from "./pages/SyncLogsPage";
 import { MediaPage } from "./pages/MediaPage";
+import { UsersPage } from "./pages/UsersPage";
 import { Layout } from "./components/Layout";
 
 function ProtectedRoute() {
@@ -32,6 +33,7 @@ export function App() {
             <Route path="/arcgis" element={<ArcGISConfigPage />} />
             <Route path="/sync-logs" element={<SyncLogsPage />} />
             <Route path="/media" element={<MediaPage />} />
+            <Route path="/users" element={<UsersPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>

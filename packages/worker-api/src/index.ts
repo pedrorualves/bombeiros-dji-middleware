@@ -11,6 +11,8 @@ import { ingestRoutes } from "./routes/ingest.js";
 import { djiPilotRoutes } from "./routes/dji-pilot.js";
 import { djiMediaRoutes } from "./routes/dji-media.js";
 import { dashboardRoutes } from "./routes/dashboard.js";
+import { userRoutes } from "./routes/users.js";
+import { commandRoutes } from "./routes/commands.js";
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -34,6 +36,8 @@ app.route("/api/orgs", orgRoutes);
 app.route("/api/orgs/:orgId/drones", droneRoutes);
 app.route("/api/orgs/:orgId/arcgis", arcgisConfigRoutes);
 app.route("/api/orgs/:orgId/sync-logs", syncLogRoutes);
+app.route("/api/orgs/:orgId/users", userRoutes);
+app.route("/api/orgs/:orgId/commands", commandRoutes);
 app.route("/api/orgs/:orgId", dashboardRoutes);
 app.route("/api/ingest", ingestRoutes);
 app.route("/manage", djiPilotRoutes);

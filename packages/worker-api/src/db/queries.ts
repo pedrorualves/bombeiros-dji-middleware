@@ -97,6 +97,32 @@ export async function createUser(
   return (await getUserById(db, id))!;
 }
 
+export async function listUsersByOrg(
+  db: DB,
+  orgId: string
+): Promise<User[]> {
+  const result = await db
+    .prepare("SELECT * FROM users WHERE org_id = ? ORDER BY created_at DESC")
+    .bind(orgId)
+    .all<User>();
+  return result.results;
+}
+
+export async function updateUserRole(
+  db: DB,
+  id: string,
+  role: string
+): Promise<void> {
+  await db
+    .prepare("UPDATE users SET role = ? WHERE id = ?")
+    .bind(role, id)
+    .run();
+}
+
+export async function deleteUser(db: DB, id: string): Promise<void> {
+  await db.prepare("DELETE FROM users WHERE id = ?").bind(id).run();
+}
+
 export async function countUsers(db: DB): Promise<number> {
   const result = await db
     .prepare("SELECT COUNT(*) as count FROM users")

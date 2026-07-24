@@ -13,4 +13,6 @@ export interface Env {
   R2_ACCOUNT_ID: string;
   EMQX_HOST: string;
   EMQX_PORT: string;
+  EMQX_API_KEY: string;
+  EMQX_API_SECRET: string;
 }

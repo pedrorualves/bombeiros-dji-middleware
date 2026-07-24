@@ -50,6 +50,18 @@ export const ArcGISConfigInput = z.object({
 });
 export type ArcGISConfigInput = z.infer<typeof ArcGISConfigInput>;
 
+export const CreateUserInput = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+  role: z.enum(["org_admin", "operator"]),
+});
+export type CreateUserInput = z.infer<typeof CreateUserInput>;
+
+export const UpdateUserRoleInput = z.object({
+  role: z.enum(["org_admin", "operator"]),
+});
+export type UpdateUserRoleInput = z.infer<typeof UpdateUserRoleInput>;
+
 export const PaginationInput = z.object({
   page: z.coerce.number().int().min(1).default(1),
   per_page: z.coerce.number().int().min(1).max(100).default(50),

@@ -7,6 +7,7 @@ import {
   Map,
   ScrollText,
   Image,
+  Users,
   LogOut,
 } from "lucide-react";
 import { useAuth } from "../auth-context";
@@ -18,6 +19,7 @@ const navItems = [
   { to: "/drones", label: "Drones", icon: Radio },
   { to: "/arcgis", label: "ArcGIS Config", icon: Map },
   { to: "/media", label: "Media", icon: Image },
+  { to: "/users", label: "Users", icon: Users },
   { to: "/sync-logs", label: "Sync Logs", icon: ScrollText },
 ];
 
