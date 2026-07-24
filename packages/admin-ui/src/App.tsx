@@ -34,6 +34,7 @@ export function App() {
             <Route path="/sync-logs" element={<SyncLogsPage />} />
             <Route path="/media" element={<MediaPage />} />
             <Route path="/users" element={<UsersPage />} />
+            <Route path="/users/:orgId" element={<UsersPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>

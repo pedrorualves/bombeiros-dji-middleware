@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Trash2, Pencil } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Plus, Trash2, Pencil, Users } from "lucide-react";
 import { apiFetch } from "../api-client";
 import { useAuth } from "../auth-context";
 
@@ -177,6 +178,13 @@ export function OrgsPage() {
                     {new Date(org.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-3 text-right">
+                    <Link
+                      to={`/users/${org.id}`}
+                      className="p-1 hover:bg-slate-600 rounded mr-1 inline-block"
+                      title="Manage Users"
+                    >
+                      <Users className="w-4 h-4 text-blue-400" />
+                    </Link>
                     <button
                       onClick={() => {
                         setEditingOrg(org);

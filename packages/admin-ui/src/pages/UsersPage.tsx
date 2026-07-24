@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import { Plus, Trash2, Shield } from "lucide-react";
+import { useParams, Link } from "react-router-dom";
+import { Plus, Trash2, Shield, ArrowLeft } from "lucide-react";
 import { apiFetch } from "../api-client";
 import { useAuth } from "../auth-context";
 
@@ -25,7 +26,9 @@ const ROLE_COLORS: Record<string, string> = {
 
 export function UsersPage() {
   const { user: currentUser } = useAuth();
-  const orgId = currentUser?.org_id;
+  const params = useParams<{ orgId?: string }>();
+  const orgId = params.orgId ?? currentUser?.org_id;
+  const isOtherOrg = params.orgId != null && params.orgId !== currentUser?.org_id;
   const [users, setUsers] = useState<UserPublic[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -102,7 +105,18 @@ export function UsersPage() {
   return (
     <div className="p-6 text-white">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold">Users</h2>
+        <div className="flex items-center gap-3">
+          {isOtherOrg && (
+            <Link
+              to="/orgs"
+              className="p-1.5 hover:bg-slate-700 rounded-lg transition-colors"
+              title="Back to Organizations"
+            >
+              <ArrowLeft className="w-5 h-5 text-slate-400" />
+            </Link>
+          )}
+          <h2 className="text-2xl font-bold">Users</h2>
+        </div>
         {canManage && (
           <button
             onClick={() => setShowForm(!showForm)}
