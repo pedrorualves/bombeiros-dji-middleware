@@ -1,0 +1,81 @@
+README.md
+  s_bb6d96b8f784ff::t_d2a0174588b146 1,3,56,59,67,100,105,110,117
+package-lock.json
+  s_bb6d96b8f784ff::t_bd4980d69cc3e2 2,8,557-572,4601-5103,6135,6694-6701,6703,6713,6716
+package.json
+  s_bb6d96b8f784ff::t_2eb7e91035e666 2,5
+packages/admin-ui/index.html
+  s_bb6d96b8f784ff::t_9ed68a24a49320 6
+packages/admin-ui/package.json
+  s_bb6d96b8f784ff::t_b54b3572f92394 2
+packages/admin-ui/src/components/Sidebar.tsx
+  s_bb6d96b8f784ff::t_e2c0d918449e0e 38
+packages/admin-ui/src/pages/LoginPage.tsx
+  s_bb6d96b8f784ff::t_fabc68586e0dd8 74,101
+packages/admin-ui/src/pages/OrgsPage.tsx
+  s_bb6d96b8f784ff::t_d65550e03909b8 117
+packages/dji-simulator/package.json
+  s_bb6d96b8f784ff::t_96b95e534d4d9a 2
+packages/dji-simulator/src/config.ts
+  s_bb6d96b8f784ff::t_7a728c883229cf 5
+packages/shared/package.json
+  s_bb6d96b8f784ff::t_8d00bf186caf5c 2
+packages/worker-api/package.json
+  s_bb6d96b8f784ff::t_4157711d2c86a4 2,14
+packages/worker-api/src/__tests__/auth.test.ts
+  s_bb6d96b8f784ff::t_94e2be690e6d18 34,49,63,70
+packages/worker-api/src/__tests__/dji-pilot.test.ts
+  s_bb6d96b8f784ff::t_b7a9eb65d5a0b5 16,29,43,56,75
+packages/worker-api/src/__tests__/ingest.test.ts
+  s_bb6d96b8f784ff::t_80ce576851430d 17
+packages/worker-api/src/__tests__/orgs.test.ts
+  s_bb6d96b8f784ff::t_d84783d8705bd0 16,29-30,35-36,51,55,64
+packages/worker-api/src/db/queries.ts
+  s_bb6d96b8f784ff::t_a039852b0f974a 10
+packages/worker-api/src/index.ts
+  s_bb6d96b8f784ff::t_326354505d339f 31
+packages/worker-api/src/middleware/auth.ts
+  s_bb6d96b8f784ff::t_bc90b54503ce59 3
+packages/worker-api/src/routes/arcgis-config.ts
+  s_bb6d96b8f784ff::t_182ae5970cc4e3 3-4
+packages/worker-api/src/routes/auth.ts
+  s_bb6d96b8f784ff::t_feaf19faefe448 3-4
+packages/worker-api/src/routes/commands.ts
+  s_bb6d96b8f784ff::t_a2884b81b50f47 3
+packages/worker-api/src/routes/dashboard.ts
+  s_bb6d96b8f784ff::t_dc1413bcc5d510 3,6
+packages/worker-api/src/routes/dji-media.ts
+  s_bb6d96b8f784ff::t_032e3b7086959a 3,55
+packages/worker-api/src/routes/dji-pilot.ts
+  s_bb6d96b8f784ff::t_6247b26cb6a9be 3,129
+packages/worker-api/src/routes/drones.ts
+  s_bb6d96b8f784ff::t_ea46f39ab2f591 3-4
+packages/worker-api/src/routes/orgs.ts
+  s_bb6d96b8f784ff::t_eba57fa238b0e4 3-4
+packages/worker-api/src/routes/sync-logs.ts
+  s_bb6d96b8f784ff::t_4820f7c14e6268 3-4
+packages/worker-api/src/routes/users.ts
+  s_bb6d96b8f784ff::t_2070e558dc3c62 3-4
+packages/worker-api/src/services/arcgis-sync.ts
+  s_bb6d96b8f784ff::t_26694b478d145a 2,31
+packages/worker-api/src/services/crypto.ts
+  s_bb6d96b8f784ff::t_b7f305e58a6977 1-2
+packages/worker-api/wrangler.jsonc
+  s_bb6d96b8f784ff::t_789c599c6f8e99 2,11,20,34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "eae6c3d362d2ac9503de4d74102aaf7fd0a79c6c",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
