@@ -1,0 +1,10 @@
+JWT_SECRET=change-me-to-a-random-64-char-string
+WEBHOOK_SECRET=shared-secret-with-emqx
+ENCRYPTION_KEY=change-me-32-byte-hex-string
+DJI_APP_ID=your-dji-app-id
+DJI_APP_KEY=your-dji-app-key
+DJI_APP_LICENSE=your-dji-app-license
+R2_ACCESS_KEY_ID=your-r2-access-key
+R2_ACCESS_KEY_SECRET=your-r2-secret-key
+EMQX_HOST=your-emqx-host-or-ip
+EMQX_PORT=1883

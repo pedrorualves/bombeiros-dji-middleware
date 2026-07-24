@@ -1,0 +1,19 @@
+{
+  "name": "bombeiros-dji-middleware",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Middleware bridging DJI Matrice 4T drones to ArcGIS Online for Portuguese firefighter departments",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w packages/worker-api",
+    "dev:ui": "npm run dev -w packages/admin-ui",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

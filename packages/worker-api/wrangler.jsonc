@@ -1,0 +1,40 @@
+{
+  "name": "bombeiros-dji-middleware",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-07-25",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // D1 Database
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bombeiros-db",
+      "database_id": "YOUR_D1_DATABASE_ID"
+    }
+  ],
+
+  // R2 Object Storage (drone media)
+  "r2_buckets": [
+    {
+      "binding": "MEDIA_BUCKET",
+      "bucket_name": "bombeiros-media"
+    }
+  ],
+
+  // KV Namespace (sessions, cached tokens)
+  "kv_namespaces": [
+    {
+      "binding": "SESSION_STORE",
+      "id": "YOUR_KV_NAMESPACE_ID"
+    }
+  ],
+
+  // Secrets (set via `wrangler secret put`):
+  // JWT_SECRET, WEBHOOK_SECRET, ENCRYPTION_KEY,
+  // DJI_APP_ID, DJI_APP_KEY, DJI_APP_LICENSE,
+  // R2_ACCESS_KEY_ID, R2_ACCESS_KEY_SECRET
+
+  "dev": {
+    "port": 8787
+  }
+}
