@@ -1,0 +1,19 @@
+packages/worker-api/src/services/arcgis-sync.ts
+  s_bb6d96b8f784ff::t_e1011d46529239 14,19,52-63,91-93,119-121
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "244fa098ff65045c35f9eb36f2fd3da87f6c143a",
+  "prompts": {},
+  "sessions": {
+    "s_bb6d96b8f784ff": {
+      "agent_id": {
+        "tool": "windsurf",
+        "id": "e4702f55-74cd-42b5-8f5c-b7c7bcffb180",
+        "model": "Claude Opus 4.6"
+      },
+      "human_author": "Pedro Alves <palves@cloudflare.com>"
+    }
+  }
+}
