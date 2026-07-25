@@ -5,7 +5,7 @@ import { ArcGISConfigInput } from "@dji-mw/shared";
 import { authMiddleware, requireOrgAccess } from "../middleware/auth.js";
 import { encrypt } from "../services/crypto.js";
 import { getArcGISConfigByOrg, upsertArcGISConfig } from "../db/queries.js";
-import { getArcGISToken } from "../services/arcgis-sync.js";
+import { getArcGISToken, clearAuthCircuit } from "../services/arcgis-sync.js";
 
 type ConfigEnv = {
   Bindings: Env;
@@ -72,6 +72,8 @@ arcgisConfigRoutes.put("/", async (c) => {
     sync_interval_seconds: data.sync_interval_seconds,
   });
 
+  clearAuthCircuit(orgId);
+
   return c.json({
     config: {
       ...config,
@@ -89,7 +91,7 @@ arcgisConfigRoutes.post("/test", async (c) => {
   }
 
   try {
-    const token = await getArcGISToken(c.env, config);
+    const token = await getArcGISToken(c.env, config, { bypassCircuit: true });
     const url = `${config.feature_service_url}?f=json&token=${encodeURIComponent(token)}`;
     const res = await fetch(url);
     if (!res.ok) {

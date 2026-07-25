@@ -10,6 +10,20 @@ interface ArcGISToken {
 
 const tokenCache = new Map<string, ArcGISToken>();
 
+const AUTH_COOLDOWN_MS = 15 * 60 * 1000; // 15 minutes
+
+interface AuthCircuitEntry {
+  until: number;
+  error: string;
+}
+
+const authCircuit = new Map<string, AuthCircuitEntry>();
+
+export function clearAuthCircuit(orgId: string): void {
+  authCircuit.delete(orgId);
+  tokenCache.delete(orgId);
+}
+
 const GENERIC_HEADERS: HeadersInit = {
   "User-Agent": "Mozilla/5.0",
   Referer: "https://www.arcgis.com",
@@ -25,10 +39,23 @@ function arcgisFetch(url: string, init?: RequestInit): Promise<Response> {
 
 export async function getArcGISToken(
   env: Env,
-  config: ArcGISConfig
+  config: ArcGISConfig,
+  options?: { bypassCircuit?: boolean }
 ): Promise<string> {
-  const cached = tokenCache.get(config.org_id);
   const now = Date.now();
+
+  // Check circuit breaker (unless bypassed by test connection)
+  if (!options?.bypassCircuit) {
+    const circuit = authCircuit.get(config.org_id);
+    if (circuit && now < circuit.until) {
+      const minutesLeft = Math.ceil((circuit.until - now) / 60000);
+      throw new Error(
+        `ArcGIS auth suspended (${minutesLeft}min remaining): ${circuit.error}. Update credentials in ArcGIS Config to retry immediately.`
+      );
+    }
+  }
+
+  const cached = tokenCache.get(config.org_id);
   if (cached && cached.expires > now + 60000) {
     return cached.token;
   }
@@ -51,10 +78,11 @@ export async function getArcGISToken(
     const data = await res.json() as { token?: string; expires?: number; error?: { code?: number; message?: string; details?: string[] } };
     if (data.error || !data.token) {
       const details = data.error?.details?.join("; ") ?? "";
-      throw new Error(
-        `ArcGIS token error: ${data.error?.message ?? "Unknown"}${details ? ` (${details})` : ""}`
-      );
+      const errMsg = `ArcGIS token error: ${data.error?.message ?? "Unknown"}${details ? ` (${details})` : ""}`;
+      authCircuit.set(config.org_id, { until: now + AUTH_COOLDOWN_MS, error: errMsg });
+      throw new Error(errMsg);
     }
+    authCircuit.delete(config.org_id);
     tokenCache.set(config.org_id, { token: data.token, expires: data.expires ?? now + 3600000 });
     return data.token;
   }
@@ -76,8 +104,11 @@ export async function getArcGISToken(
     });
     const data = await res.json() as { access_token?: string; expires_in?: number; error?: { message: string } };
     if (data.error || !data.access_token) {
-      throw new Error(`ArcGIS OAuth error: ${data.error?.message ?? "Unknown"}`);
+      const errMsg = `ArcGIS OAuth error: ${data.error?.message ?? "Unknown"}`;
+      authCircuit.set(config.org_id, { until: now + AUTH_COOLDOWN_MS, error: errMsg });
+      throw new Error(errMsg);
     }
+    authCircuit.delete(config.org_id);
     const expiresIn = (data.expires_in ?? 3600) * 1000;
     tokenCache.set(config.org_id, { token: data.access_token, expires: now + expiresIn });
     return data.access_token;
